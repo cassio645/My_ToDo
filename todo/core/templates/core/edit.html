@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Editando{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-success" type="submit" value="Salvar alterações">
+        <a class="add-link" href="{% url 'Todo:delete' todo.id %}"><div class="delete-div add-link">Apagar</div></a>
+
+    </form>
+{% endblock %}

@@ -13,5 +13,9 @@
         <strong>Descrição:</strong>
         {{ todo.description }}
     </p>
+    <form method="post"> 
+        {% csrf_token %}
+        <a class="add-link" href="{% url 'Todo:edit' todo.id %}"><div class="edit-div">Editar</div></a>
+    </form>
 </div>
 {% endblock %}

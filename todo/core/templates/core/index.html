@@ -17,7 +17,7 @@
             <tr>
                 {% for todo in all_todos %}
                     <td>{{ todo.title }}</td>
-                    <td class="space"><a href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td><br>
+                    <td><a id="space" href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td><br>
                     <hr>
                 {% empty %}
                     <p>Você ainda não criou nenhuma tarefa!</p>
