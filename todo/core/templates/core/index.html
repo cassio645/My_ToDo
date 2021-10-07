@@ -3,19 +3,24 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-sm">
+    <div class="col-md">
         <h1>Criar nova tarefa</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque nihil minus recusandae eligendi nostrum illo incidunt, qui quibusdam corporis libero voluptatum architecto! Maxime sapiente at fugit omnis, illum perferendis.</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Criar Tarefa</button>
+        </form>
     </div>
     <div class="col-sm">
         <h1>Lista de tarefas</h1>
-            <ul>
+            <tr>
                 {% for todo in all_todos %}
-                    <li>{{todo.id }} - {{ todo.title }}</li>
+                    <td>{{ todo.title }}</td>
+                    <td> <a href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td> <br>
                 {% empty %}
                     <p>Você ainda não criou nenhuma tarefa!</p>
                 {% endfor %}
-            </ul>
+            </tr>
     </div>
 </div>
 {% endblock %}
