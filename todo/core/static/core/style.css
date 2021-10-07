@@ -1,0 +1,13 @@
+a{
+    float: right;
+    padding-right: 100px;
+}
+
+.col-md{
+    padding-left: 5px;
+    padding-right: 40px;
+}
+
+.col-sm {
+    padding-left: 10px;
+}

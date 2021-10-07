@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Lista de Tarefas{% endblock %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="row">
@@ -7,7 +8,7 @@
         <h1>Criar nova tarefa</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button class="btn btn-primary" type="submit">Criar Tarefa</button>
         </form>
     </div>
@@ -16,7 +17,8 @@
             <tr>
                 {% for todo in all_todos %}
                     <td>{{ todo.title }}</td>
-                    <td> <a href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td> <br>
+                    <td class="space"><a href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td><br>
+                    <hr>
                 {% empty %}
                     <p>Você ainda não criou nenhuma tarefa!</p>
                 {% endfor %}
