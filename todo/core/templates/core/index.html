@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Tarefas{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm">
+        <h1>Criar nova tarefa</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo eaque nihil minus recusandae eligendi nostrum illo incidunt, qui quibusdam corporis libero voluptatum architecto! Maxime sapiente at fugit omnis, illum perferendis.</p>
+    </div>
+    <div class="col-sm">
+        <h1>Lista de tarefas</h1>
+            <ul>
+                {% for todo in all_todos %}
+                    <li>{{todo.id }} - {{ todo.title }}</li>
+                {% empty %}
+                    <p>Você ainda não criou nenhuma tarefa!</p>
+                {% endfor %}
+            </ul>
+    </div>
+</div>
+{% endblock %}

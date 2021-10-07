@@ -7,6 +7,10 @@ class ToDo(models.Model):
     done = models.BooleanField("Finalizada", default=False)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Data de criação")
 
+    class Meta:
+        verbose_name_plural = "To Do"
+        ordering = ['-created']
+
     def __str__(self):
         return self.title
 
