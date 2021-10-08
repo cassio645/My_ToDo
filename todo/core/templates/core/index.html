@@ -14,15 +14,30 @@
     </div>
     <div class="col-sm">
         <h1>Lista de tarefas</h1>
-            <tr>
-                {% for todo in all_todos %}
-                    <td>{{ todo.title }}</td>
-                    <td><a id="space" href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td><br>
-                    <hr>
-                {% empty %}
-                    <p>Você ainda não criou nenhuma tarefa!</p>
-                {% endfor %}
-            </tr>
+        <tr>
+            {% for todo in todos %}
+                <td>{{ todo.title }}</td><br>
+                <td>Finalizada: {% if todo.done %}<i class="bi bi-check2-circle"></i>{% else %}<i class="bi bi-x-circle"></i>{% endif %}
+                <a id="space" href="{% url 'Todo:detail' todo.id %}">Detalhes</a></td>
+                <br><hr>
+            {% empty %}
+                <p>Você ainda não criou nenhuma tarefa!</p>
+            {% endfor %}
+        </tr>
+
+
+        <!--Div de Paginação -->
+        <div class="div-pagination">
+            {% if todos.has_previous %}
+                <a href="?page={{ todos.previous_page_number }}"><i class="bi bi-arrow-left"></i></a>
+            {% endif %}
+            
+            {{todos.number}} de {{ todos.paginator.num_pages}}
+
+            {% if todos.has_next %}
+                <a href="?page={{ todos.next_page_number }}"><i class="bi bi-arrow-right"></i></span></a>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
